@@ -113,6 +113,12 @@ public class QueryProcessor {
 
             return "Paris";
         }
+        else if (query.contains("Spain")) {
+            return "Peseta";
+        }
+        else if (query.contains("banana")) {
+            return "yellow";
+        }
 
         return "";
     }
