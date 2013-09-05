@@ -1,5 +1,6 @@
 package com.develogical;
 
+import java.math.BigInteger;
 import java.util.StringTokenizer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,6 +70,21 @@ public class QueryProcessor {
 
 
             return "David Cameron";
+        }
+
+        else if (query.contains("primes:")) {
+
+            Pattern p = Pattern.compile(".*primes: ([0-9]+), ([0-9]+).*");
+            Matcher m = p.matcher(query);
+
+            if (m.find()) {
+                BigInteger bigInt = new BigInteger(m.group(1));
+                if(bigInt.isProbablePrime(1)) {
+                    return "" + m.group(1);
+                } else {
+                    return "" + m.group(2);
+                }
+            }
         }
 
         return "";

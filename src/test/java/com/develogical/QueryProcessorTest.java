@@ -68,4 +68,10 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("who is the Prime Minister of Great Britain"),
                 containsString("David Cameron"));
     }
+
+    @Test
+    public void knowsAboutPrimeNumbers() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers are primes: 53, 336"),
+                containsString("53"));
+    }
 }
