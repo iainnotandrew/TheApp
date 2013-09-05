@@ -75,17 +75,39 @@ public class QueryProcessor {
 
         else if (query.contains("primes:")) {
 
-            Pattern p = Pattern.compile(".*primes: ([0-9]+), ([0-9]+).*");
-            Matcher m = p.matcher(query);
+            String[] parts = query.split("primes: ");
 
-            if (m.find()) {
-                BigInteger bigInt = new BigInteger(m.group(1));
-                if(bigInt.isProbablePrime(1)) {
-                    return "" + m.group(1);
-                } else {
-                    return "" + m.group(2);
+            StringTokenizer st = new StringTokenizer(parts[1], ", ");
+
+            String output = "";
+
+            while(st.hasMoreTokens())
+            {
+                String currentString = st.nextToken();
+                BigInteger current = new BigInteger(currentString);
+                if (current.isProbablePrime(1))
+                {
+                    if (output.length() > 0)
+                    {
+                        output = output + ", ";
+                    }
+                    output = output + currentString;
                 }
             }
+
+            return output;
+
+//            Pattern p = Pattern.compile(".*primes: ([0-9]+), ([0-9]+).*");
+//            Matcher m = p.matcher(query);
+//
+//            if (m.find()) {
+//                BigInteger bigInt = new BigInteger(m.group(1));
+//                if(bigInt.isProbablePrime(1)) {
+//                    return "" + m.group(1);
+//                } else {
+//                    return "" + m.group(2);
+//                }
+//            }
         }
         else if (query.contains("Eiffel")) {
 
