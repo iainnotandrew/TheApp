@@ -59,6 +59,11 @@ public class QueryProcessor {
 
             return "";
         }
+        else if (query.contains("Bond")) {
+
+
+            return "Sean Connery";
+        }
 
         return "";
     }
