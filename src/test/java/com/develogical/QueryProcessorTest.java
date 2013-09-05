@@ -108,4 +108,9 @@ public class QueryProcessorTest {
     public void knowsAboutFibonaci() throws Exception {
         assertThat(queryProcessor.process("what is the 23th number in the Fibonacci sequence"), containsString("28657"));
     }
+
+    @Test
+    public void knowsAboutSquareNCube() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 5, 1, 5, 5"), containsString("1"));
+    }
 }

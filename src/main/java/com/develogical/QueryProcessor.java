@@ -96,18 +96,6 @@ public class QueryProcessor {
             }
 
             return output;
-
-//            Pattern p = Pattern.compile(".*primes: ([0-9]+), ([0-9]+).*");
-//            Matcher m = p.matcher(query);
-//
-//            if (m.find()) {
-//                BigInteger bigInt = new BigInteger(m.group(1));
-//                if(bigInt.isProbablePrime(1)) {
-//                    return "" + m.group(1);
-//                } else {
-//                    return "" + m.group(2);
-//                }
-//            }
         }
         else if (query.contains("Eiffel")) {
 
@@ -142,8 +130,45 @@ public class QueryProcessor {
             }
             return "dunno";
         }
+        else if (query.contains("square and a cube:")) {
+
+            String[] parts = query.split("square and a cube: ");
+
+            StringTokenizer st = new StringTokenizer(parts[1], ", ");
+
+            String output = "";
+
+            while(st.hasMoreTokens())
+            {
+                String currentString = st.nextToken();
+                int current = intFromString(currentString);
+                if (isSquare(current))
+                {
+                    if(isCube(current)) {
+                        if (output.length() > 0)
+                        {
+                            output = output + ", ";
+                        }
+
+                        output = output + currentString;
+                    }
+                }
+            }
+
+            return output;
+        }
 
         return "";
+    }
+
+    private boolean isCube(int number) {
+        double answer = Math.cbrt(number);
+        return (answer - Math.round(answer) < 0.01);
+    }
+
+    private boolean isSquare(int number) {
+        double answer = Math.sqrt(number);
+        return (answer - Math.round(answer) < 0.01);
     }
 
     private int intFromString(String string) {
