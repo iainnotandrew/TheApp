@@ -13,6 +13,9 @@ public class QueryProcessor {
         else if (query.contains("cow")) {
             return "Is a good source of methane among other things";
         }
+        else if (query.contains("foo")) {
+            return "bar";
+        }
         return "";
     }
 }
