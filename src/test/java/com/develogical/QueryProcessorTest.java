@@ -44,4 +44,10 @@ public class QueryProcessorTest {
     public void knowsAboutAddition() throws Exception {
         assertThat(queryProcessor.process("what is 1 plus 1"), containsString("2"));
     }
+
+    @Test
+    public void knowsAboutLargestMultipleNumbers() throws Exception {
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 2, 12, 300, 1"),
+                containsString("300"));
+    }
 }

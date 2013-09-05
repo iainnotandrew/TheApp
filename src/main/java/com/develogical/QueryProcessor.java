@@ -1,6 +1,8 @@
 package com.develogical;
 
 import java.util.StringTokenizer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class QueryProcessor {
 
@@ -22,19 +24,36 @@ public class QueryProcessor {
             return "TeamAwesome";
         }
         else if (query.contains("plus")) {
-            StringTokenizer st = new StringTokenizer(query);
-            String previous = "";
-            while(st.hasMoreTokens()) {
-                String current = st.nextToken();
-                if (current.equals("plus")) {
-                    return "" + (Integer.parseInt(previous) + Integer.parseInt(st.nextToken()));
-                }
-                previous = current;
-            }
 
+            Pattern p = Pattern.compile("what is ([0-9]+) plus ([0-9]+).*");
+            Matcher m = p.matcher(query);
+            if (m.find()) {
+                return "" + (intFromString(m.group(1)) + intFromString(m.group(2)));
+            }
 
             return "";
         }
+
+        else if (query.contains("largest")) {
+
+            Pattern p = Pattern.compile("which of the following numbers is the largest: ([0-9]+), ([0-9]+), ([0-9]+), ([0-9]+).*");
+            Matcher m = p.matcher(query);
+            int highest = 0;
+
+            if (m.find()) {
+                for (int i = 1; i < m.groupCount(); i ++) {
+                    if(intFromString(m.group(i)) > highest) {
+                        highest = intFromString(m.group(i));
+                    }
+                }
+            }
+            return "" + highest;
+        }
+
         return "";
+    }
+
+    private int intFromString(String string) {
+        return Integer.parseInt(string);
     }
 }
