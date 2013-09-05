@@ -126,6 +126,22 @@ public class QueryProcessor {
                 return "" + (intFromString(m.group(1)) - intFromString(m.group(2)));
             }
         }
+        else if (query.contains("Fibonacci")) {
+            Pattern p = Pattern.compile("what is the ([0-9]+).*");
+            Matcher m = p.matcher(query);
+
+            int prev1=0, prev2=1;
+            if(m.find()) {
+                int n = intFromString(m.group(1));
+                for(int i=0; i<n; i++) {
+                    int savePrev1 = prev1;
+                    prev1 = prev2;
+                    prev2 = savePrev1 + prev2;
+                }
+                return "" + prev1;
+            }
+            return "dunno";
+        }
 
         return "";
     }

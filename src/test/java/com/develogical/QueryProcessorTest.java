@@ -103,4 +103,9 @@ public class QueryProcessorTest {
     public void knowsAboutMinus() throws Exception {
         assertThat(queryProcessor.process("what is 1 minus 1"), containsString("0"));
     }
+
+    @Test
+    public void knowsAboutFibonaci() throws Exception {
+        assertThat(queryProcessor.process("what is the 23th number in the Fibonacci sequence"), containsString("28657"));
+    }
 }
