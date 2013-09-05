@@ -157,9 +157,20 @@ public class QueryProcessor {
 
             return output;
         }
+        else if (query.contains("power of")) {
+
+            Pattern p = Pattern.compile("what is ([0-9]+) to the power of ([0-9]+).*");
+            Matcher m = p.matcher(query);
+            if (m.find()) {
+                return "" + (Math.pow(intFromString(m.group(1)),intFromString(m.group(2))));
+            }
+
+            return "";
+        }
 
         return "";
     }
+
 
     private boolean isCube(int number) {
         double answer = Math.cbrt(number);

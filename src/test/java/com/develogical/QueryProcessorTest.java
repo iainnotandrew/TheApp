@@ -113,4 +113,9 @@ public class QueryProcessorTest {
     public void knowsAboutSquareNCube() throws Exception {
         assertThat(queryProcessor.process("which of the following numbers is both a square and a cube: 5, 1, 5, 5"), containsString("1"));
     }
+
+    @Test
+    public void knowsAboutToPower() throws Exception {
+        assertThat(queryProcessor.process("what is 3 to the power of 3"), containsString("27"));
+    }
 }
