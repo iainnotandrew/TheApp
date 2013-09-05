@@ -49,6 +49,16 @@ public class QueryProcessor {
             }
             return "" + highest;
         }
+        else if (query.contains("multiplied")) {
+
+            Pattern p = Pattern.compile("what is ([0-9]+) multiplied by ([0-9]+).*");
+            Matcher m = p.matcher(query);
+            if (m.find()) {
+                return "" + (intFromString(m.group(1)) * intFromString(m.group(2)));
+            }
+
+            return "";
+        }
 
         return "";
     }
