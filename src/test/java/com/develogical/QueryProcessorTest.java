@@ -74,4 +74,10 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("which of the following numbers are primes: 53, 336"),
                 containsString("53"));
     }
+
+    @Test
+    public void knowsAboutEiffelTower() throws Exception {
+        assertThat(queryProcessor.process("which city is the Eiffel tower in"),
+                containsString("Paris"));
+    }
 }

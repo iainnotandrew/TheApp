@@ -87,6 +87,10 @@ public class QueryProcessor {
                 }
             }
         }
+        else if (query.contains("Eiffel")) {
+
+            return "Paris";
+        }
 
         return "";
     }
