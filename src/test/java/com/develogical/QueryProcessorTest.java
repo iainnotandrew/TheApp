@@ -62,4 +62,10 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process(" who played James Bond in the film Dr No"),
                 containsString("Sean Connery"));
     }
+
+    @Test
+    public void knowsAboutPM() throws Exception {
+        assertThat(queryProcessor.process("who is the Prime Minister of Great Britain"),
+                containsString("David Cameron"));
+    }
 }

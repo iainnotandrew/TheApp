@@ -65,6 +65,12 @@ public class QueryProcessor {
             return "Sean Connery";
         }
 
+        else if (query.contains("Prime Minister")) {
+
+
+            return "David Cameron";
+        }
+
         return "";
     }
 
