@@ -24,4 +24,9 @@ public class QueryProcessorTest {
     public void knowsAboutTDD() throws Exception {
         assertThat(queryProcessor.process("TDD"), containsString("Test Driven Development"));
     }
+
+    @Test
+    public void knowsAboutCows() throws Exception {
+        assertThat(queryProcessor.process("cow"), containsString("good source of methane"));
+    }
 }

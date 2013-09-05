@@ -10,6 +10,9 @@ public class QueryProcessor {
         else if (query.contains("TDD")) {
             return "Test Driven Development is awesome!";
         }
+        else if (query.contains("cow")) {
+            return "Is a good source of methane among other things";
+        }
         return "";
     }
 }
