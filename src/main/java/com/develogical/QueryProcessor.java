@@ -119,6 +119,13 @@ public class QueryProcessor {
         else if (query.contains("banana")) {
             return "yellow";
         }
+        else if (query.contains("minus")) {
+            Pattern p = Pattern.compile("what is ([0-9]+) minus ([0-9]+).*");
+            Matcher m = p.matcher(query);
+            if (m.find()) {
+                return "" + (intFromString(m.group(1)) - intFromString(m.group(2)));
+            }
+        }
 
         return "";
     }

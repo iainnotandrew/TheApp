@@ -98,4 +98,9 @@ public class QueryProcessorTest {
         assertThat(queryProcessor.process("what colour is a banana"),
                 containsString("yellow"));
     }
+
+    @Test
+    public void knowsAboutMinus() throws Exception {
+        assertThat(queryProcessor.process("what is 1 minus 1"), containsString("0"));
+    }
 }
