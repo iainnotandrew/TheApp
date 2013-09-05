@@ -34,4 +34,9 @@ public class QueryProcessorTest {
     public void knowsAboutFoo() throws Exception {
         assertThat(queryProcessor.process("foo"), containsString("bar"));
     }
+
+    @Test
+    public void knowsAboutYourName() throws Exception {
+        assertThat(queryProcessor.process("what is your name"), containsString("TeamAwesome"));
+    }
 }

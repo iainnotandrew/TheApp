@@ -16,6 +16,9 @@ public class QueryProcessor {
         else if (query.contains("foo")) {
             return "bar";
         }
+        else if (query.contains("what is your name")) {
+            return "TeamAwesome";
+        }
         return "";
     }
 }
