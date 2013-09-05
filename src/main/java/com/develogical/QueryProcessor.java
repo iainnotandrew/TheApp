@@ -42,8 +42,9 @@ public class QueryProcessor {
             int highest = 0;
 
             if (m.find()) {
-                for (int i = 1; i < m.groupCount(); i ++) {
-                    if(intFromString(m.group(i)) > highest) {
+                for (int i = 1; i <= m.groupCount(); i ++) {
+                    int current = intFromString(m.group(i));
+                    if(current > highest) {
                         highest = intFromString(m.group(i));
                     }
                 }

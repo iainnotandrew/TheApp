@@ -47,8 +47,8 @@ public class QueryProcessorTest {
 
     @Test
     public void knowsAboutLargestMultipleNumbers() throws Exception {
-        assertThat(queryProcessor.process("which of the following numbers is the largest: 2, 12, 300, 1"),
-                containsString("300"));
+        assertThat(queryProcessor.process("which of the following numbers is the largest: 668, 28, 24, 925"),
+                containsString("925"));
     }
 
     @Test
