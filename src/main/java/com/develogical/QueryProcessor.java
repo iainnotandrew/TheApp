@@ -1,5 +1,7 @@
 package com.develogical;
 
+import java.util.StringTokenizer;
+
 public class QueryProcessor {
 
     public String process(String query) {
@@ -18,6 +20,20 @@ public class QueryProcessor {
         }
         else if (query.contains("what is your name")) {
             return "TeamAwesome";
+        }
+        else if (query.contains("plus")) {
+            StringTokenizer st = new StringTokenizer(query);
+            String previous = "";
+            while(st.hasMoreTokens()) {
+                String current = st.nextToken();
+                if (current.equals("plus")) {
+                    return "" + (Integer.parseInt(previous) + Integer.parseInt(st.nextToken()));
+                }
+                previous = current;
+            }
+
+
+            return "";
         }
         return "";
     }
